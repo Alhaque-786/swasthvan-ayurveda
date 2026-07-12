@@ -1,26 +1,189 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   Swasthvan Ayurveda — Design System
+   ============================================================ */
+
+@theme {
+  /* Cream / paper backgrounds */
+  --color-cream-50: #faf8f2;
+  --color-cream-100: #f5f0e4;
+  --color-cream-200: #ece3d0;
+  --color-cream-300: #ddd0b6;
+
+  /* Brand — deep forest greens */
+  --color-brand-50: #eef5ef;
+  --color-brand-100: #d5e8d9;
+  --color-brand-200: #aecfb5;
+  --color-brand-300: #7fb28b;
+  --color-brand-400: #4f9060;
+  --color-brand-500: #2f6d3f;
+  --color-brand-600: #245732;
+  --color-brand-700: #1c4527;
+  --color-brand-800: #163720;
+  --color-brand-900: #0f2817;
+  --color-brand-950: #081a0e;
+
+  /* Leaf — fresh accent greens */
+  --color-leaf-300: #9fd67a;
+  --color-leaf-400: #74c34a;
+  --color-leaf-500: #57ac2c;
+  --color-leaf-600: #479021;
+
+  /* Gold / earth accent */
+  --color-gold-300: #e8cd88;
+  --color-gold-400: #d9b45a;
+  --color-gold-500: #c99b2e;
+  --color-gold-600: #a67e1f;
+
+  /* Terracotta accent (dosha / warmth) */
+  --color-clay-400: #d98b5f;
+  --color-clay-500: #c46b3a;
+
+  --font-display: var(--font-display), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 2px 10px rgba(15, 40, 23, 0.06);
+  --shadow-card: 0 18px 40px -18px rgba(15, 40, 23, 0.28);
+  --shadow-glow: 0 20px 60px -20px rgba(87, 172, 44, 0.45);
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-spin-slow: spin 30s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:root {
+  --background: var(--color-cream-50);
+  --foreground: var(--color-brand-900);
+}
+
+* {
+  border-color: color-mix(in srgb, var(--color-brand-900) 12%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-leaf-400);
+  color: var(--color-brand-950);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-300);
+  border: 3px solid var(--color-cream-100);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-500);
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .container-px {
+    padding-inline: clamp(1.25rem, 5vw, 4rem);
+  }
+
+  /* On-scroll reveal — starts hidden, animates when .is-visible added */
+  .reveal {
+    opacity: 0;
+  }
+  .reveal.is-visible {
+    animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Organic blob mask */
+  .blob {
+    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  }
+  .blob-2 {
+    border-radius: 63% 37% 41% 59% / 43% 58% 42% 57%;
+  }
+
+  .bg-grain {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      color-mix(in srgb, var(--color-brand-900) 8%, transparent) 1px,
+      transparent 0
+    );
+    background-size: 22px 22px;
+  }
+
+  .hover-lift {
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+  }
 }
