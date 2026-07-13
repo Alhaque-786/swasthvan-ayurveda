@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
+import logoArtwork from "../../public/logo.png";
 
 /**
  * LogoMark — the circular mortar-&-pestle-with-leaves brand emblem,
@@ -80,25 +82,31 @@ export function Logo({
   inverted?: boolean;
   showTagline?: boolean;
 }) {
+  // On light surfaces, use the real brand artwork (its dark-green wordmark
+  // reads cleanly on cream/white).
+  if (!inverted) {
+    return (
+      <Image
+        src={logoArtwork}
+        alt="Swasthvan Ayurveda"
+        priority
+        sizes="220px"
+        className={cn("h-12 w-auto", className)}
+      />
+    );
+  }
+
+  // On dark surfaces the logo's dark-green text would disappear, so render an
+  // SVG lockup with cream text that mirrors the mark.
   return (
     <span className={cn("flex items-center gap-2.5", className)}>
       <LogoMark className="h-9 w-9 shrink-0" />
       <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-display text-xl font-600 tracking-tight",
-            inverted ? "text-cream-50" : "text-brand-800",
-          )}
-        >
+        <span className="font-display text-xl font-600 tracking-tight text-cream-50">
           Swasthvan
         </span>
         {showTagline && (
-          <span
-            className={cn(
-              "text-[0.6rem] font-600 uppercase tracking-[0.42em]",
-              inverted ? "text-leaf-300" : "text-leaf-600",
-            )}
-          >
+          <span className="text-[0.6rem] font-600 uppercase tracking-[0.42em] text-leaf-300">
             Ayurveda
           </span>
         )}
