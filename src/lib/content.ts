@@ -3,6 +3,22 @@
  * Swap these values for real copy / a CMS later — the UI reads from here.
  */
 
+export const SITE = {
+  name: "Swasthvan Ayurveda",
+  url: "https://swasthvan-ayurveda.vercel.app",
+  email: "Swasthvanayurveda@gmail.com",
+  phoneDisplay: "+91 95690 38538",
+  phoneHref: "+919569038538",
+  address: {
+    line1: "Goriyana, Bhadohi",
+    line2: "Uttar Pradesh 221401, India",
+  },
+  socials: {
+    instagram: "https://www.instagram.com/swasthvanayurveda",
+    facebook: "https://www.facebook.com/share/1CSkcp4gqx/",
+  },
+} as const;
+
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/products" },

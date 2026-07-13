@@ -20,7 +20,7 @@ const sans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://swasthvan.example.com"),
+  metadataBase: new URL("https://swasthvan-ayurveda.vercel.app"),
   title: {
     default: "Swasthvan Ayurveda — Pure Herbal Wellness, Rooted in Tradition",
     template: "%s · Swasthvan Ayurveda",

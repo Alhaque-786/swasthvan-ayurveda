@@ -40,7 +40,7 @@ export default function AboutPage() {
           <div className="absolute left-1/2 top-10 h-96 w-[40rem] -translate-x-1/2 rounded-full bg-leaf-400/12 blur-3xl" />
         </div>
         <div className="container-px mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
-          <Eyebrow>Est. in the foothills of the Himalayas</Eyebrow>
+          <Eyebrow>Handcrafted in Bhadohi, Uttar Pradesh</Eyebrow>
           <h1 className="font-display text-5xl font-500 leading-[1.05] tracking-tight text-brand-900 text-balance sm:text-6xl">
             We didn&apos;t invent Ayurveda. We just made it{" "}
             <span className="italic text-leaf-600">honest again.</span>

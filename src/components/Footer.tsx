@@ -1,13 +1,18 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { SITE } from "@/lib/content";
 import {
   InstagramIcon,
   FacebookIcon,
-  TwitterIcon,
   MailIcon,
   PhoneIcon,
   PinIcon,
 } from "@/components/icons";
+
+const SOCIALS = [
+  { Icon: InstagramIcon, href: SITE.socials.instagram, label: "Instagram" },
+  { Icon: FacebookIcon, href: SITE.socials.facebook, label: "Facebook" },
+];
 
 const COLUMNS = [
   {
@@ -47,22 +52,35 @@ export function Footer() {
               crafted for the way you live today.
             </p>
             <div className="flex flex-col gap-2 text-sm text-cream-100/70">
-              <a href="mailto:hello@swasthvan.com" className="flex items-center gap-3 transition hover:text-leaf-300">
-                <MailIcon className="h-4 w-4 text-leaf-400" /> hello@swasthvan.com
+              <a
+                href={`mailto:${SITE.email}`}
+                className="flex items-center gap-3 transition hover:text-leaf-300"
+              >
+                <MailIcon className="h-4 w-4 shrink-0 text-leaf-400" /> {SITE.email}
               </a>
-              <a href="tel:+18005550100" className="flex items-center gap-3 transition hover:text-leaf-300">
-                <PhoneIcon className="h-4 w-4 text-leaf-400" /> +1 (800) 555-0100
+              <a
+                href={`tel:${SITE.phoneHref}`}
+                className="flex items-center gap-3 transition hover:text-leaf-300"
+              >
+                <PhoneIcon className="h-4 w-4 shrink-0 text-leaf-400" /> {SITE.phoneDisplay}
               </a>
-              <span className="flex items-center gap-3">
-                <PinIcon className="h-4 w-4 text-leaf-400" /> Rishikesh · London · Austin
+              <span className="flex items-start gap-3">
+                <PinIcon className="mt-0.5 h-4 w-4 shrink-0 text-leaf-400" />
+                <span>
+                  {SITE.address.line1}
+                  <br />
+                  {SITE.address.line2}
+                </span>
               </span>
             </div>
             <div className="flex gap-3">
-              {[InstagramIcon, FacebookIcon, TwitterIcon].map((Icon, i) => (
+              {SOCIALS.map(({ Icon, href, label }) => (
                 <Link
-                  key={i}
-                  href="#"
-                  aria-label="Social link"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                   className="grid h-10 w-10 place-items-center rounded-full ring-1 ring-white/15 transition hover:bg-white/10 hover:text-leaf-300"
                 >
                   <Icon className="h-4.5 w-4.5" />
