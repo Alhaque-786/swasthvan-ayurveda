@@ -45,7 +45,7 @@ export function Footer() {
       <div className="container-px relative mx-auto max-w-7xl">
         <div className="grid gap-12 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:py-20">
           {/* brand column */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col items-start gap-6">
             <Logo inverted />
             <p className="max-w-xs text-sm leading-relaxed text-cream-100/70">
               Pure herbal wellness, rooted in 5,000 years of Ayurvedic tradition and
