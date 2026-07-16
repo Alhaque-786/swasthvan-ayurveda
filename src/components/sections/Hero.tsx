@@ -111,7 +111,7 @@ export function Hero() {
             {/* center emblem */}
             <div className="absolute inset-0 grid place-items-center">
               <div className="grid h-40 w-40 place-items-center rounded-full bg-cream-50/95 shadow-2xl backdrop-blur">
-                <LogoMark className="h-24 w-24" />
+                <LogoMark priority className="h-24 w-24" />
               </div>
             </div>
 

@@ -33,7 +33,7 @@ export function Philosophy() {
               <div className="relative grid h-64 w-64 place-items-center rounded-full border border-brand-300/50 sm:h-72 sm:w-72">
                 <div className="grid h-44 w-44 place-items-center rounded-full border border-brand-300/50 sm:h-52 sm:w-52">
                   <div className="grid h-28 w-28 place-items-center rounded-full bg-brand-800 shadow-lg sm:h-32 sm:w-32">
-                    <LogoMark className="h-20 w-20" />
+                    <LogoMark variant="light" className="h-20 w-20" />
                   </div>
                 </div>
                 {["Vata", "Pitta", "Kapha"].map((d, i) => (

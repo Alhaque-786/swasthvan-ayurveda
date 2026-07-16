@@ -45,7 +45,8 @@ export const metadata: Metadata = {
     siteName: "Swasthvan Ayurveda",
   },
   icons: {
-    icon: [{ url: "/logo-mark.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: "/favicon.png",
   },
 };
 
