@@ -5,7 +5,7 @@ import { Products } from "@/components/sections/Products";
 import { Benefits } from "@/components/sections/Benefits";
 import { Doshas } from "@/components/sections/Doshas";
 import { Ingredients } from "@/components/sections/Ingredients";
-import { Process } from "@/components/sections/Process";
+// import { Process } from "@/components/sections/Process"; // hidden for now
 import { Stats } from "@/components/sections/Stats";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Journal } from "@/components/sections/Journal";
@@ -22,7 +22,7 @@ export default function HomePage() {
       <Benefits />
       <Doshas />
       <Ingredients />
-      <Process />
+      {/* <Process /> — section hidden for now */}
       <Stats />
       <Testimonials />
       <Journal />
